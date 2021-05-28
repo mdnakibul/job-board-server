@@ -33,6 +33,10 @@ client.connect(err => {
           res.send(result)  
         })
     })
+
+    app.get('/',(req, res)=>{
+        res.send('hello boss')
+    })
    
 });
 
