@@ -19,25 +19,24 @@ client.connect(err => {
         userList.insertOne(req.body)
             .then(result => {
                 console.log(result);
-                res.send(result.insertedCount>0)
+                res.send(result.insertedCount > 0)
             })
     })
 
-    app.get('/login',(req, res)=>{
+    app.get('/login', (req, res) => {
         console.log(req.query.email);
         console.log(req.body);
-        userList.find({email:req.query.email})
-        .toArray((error , result) =>{
-            console.log(error);
-            console.log(result);
-          res.send(result)  
-        })
+        userList.find({ email: req.query.email })
+            .toArray((error, result) => {
+                console.log(error);
+                console.log(result);
+                res.send(result)
+            })
     })
-
-    app.get('/',(req, res)=>{
-        res.send('hello boss')
-    })
-   
 });
+
+app.get('/', (req, res) => {
+    res.send('hello boss')
+})
 
 app.listen(process.env.PORT || 5000);
